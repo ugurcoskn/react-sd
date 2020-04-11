@@ -3,18 +3,15 @@ import { Reducer } from './reducer';
 
 const initialState: any = {
     leftPanelWidth: 110,
-    boxWidth: 200,
-    boxHeight: 40,
-    gapVerticalBox: 80,
-    gapHorizontalBox: 110,
-    GAP_VERTICAL_BOX: 80,
-    GAP_HORIZONTAL_BOX: 210,
-    LEFT_PANEL_MARGIN: 11,
-    BOX_BORDER_COLOR: '#18aebf',
-    EDGE_LINE_COLOR: '#18aebf',
-    EDGE_POINT_COLOR: '#18aebf',
-    HORIZONTAL_LINE_WIDTH: 1,
-    HORIZONTAL_LINE_COLOR: '#18aebf',
+    boxWidth: 100,
+    boxHeight: 50,
+    gapEdge: 80,
+    gapStep: 110,
+    boxBorderColor: '#18aebf',
+    edgeLineColor: '#18aebf',
+    edgePointColor: '#18aebf',
+    stepLineWidth: 1,
+    stepLineColor: '#18aebf',
 };
 
 export const Context = createContext(initialState);

@@ -1,8 +1,8 @@
 export interface Data {
-    time: number;
+    name: number;
     from: number;
     to: number;
-    text: string;
+    edge: string;
 }
 
 export interface SequenceDiagramProps {
@@ -15,14 +15,13 @@ export interface CustomStyleProps {
     leftPanelWidth: number;
     boxWidth: number;
     boxHeight: number;
-    gapVerticalBox: number;
-    gapHorizontalBox: number;
-    leftPanelMargin: number;
+    gapEdge: number;
+    gapStep: number;
     boxBorderColor: string;
     edgeLineColor: string;
     edgePointColor: string;
-    horizontalLineWidth: number;
-    horizontalLineColor: string;
+    stepLineWidth: number;
+    stepLineColor: string;
 }
 
 export interface LeftPanelStyle {

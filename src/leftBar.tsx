@@ -10,7 +10,7 @@ const StyledLeftPanel = styled.div`
             ? `${props.customStyle.leftPanelWidth + props.customStyle.leftPanelWidth}px`
             : 'auto'};
     top: ${(props: { customStyle?: any }): string | number =>
-        props.customStyle.top ? `${props.customStyle.top + props.customStyle.leftPanelMargin}px` : 0};
+        props.customStyle.top ? `${props.customStyle.top + 12}px` : 0};
 `;
 
 interface LeftBarProps {
@@ -19,15 +19,18 @@ interface LeftBarProps {
     text: string | number;
 }
 
-export const LeftBar = ({ index, text }: LeftBarProps) => {
+export const LeftBar = ({ index, text, style }: LeftBarProps) => {
     const [state] = useContext(Context);
 
-    const heightStyle = state.boxHeight + index * state.gapVerticalBox + 20;
+    const heightStyle = state.boxHeight + index * state.gapEdge + 20;
 
     const customStyle = {
         top: heightStyle,
         leftPanelWidth: state.leftPanelWidth,
-        leftPanelMargin: state.leftPanelMargin,
     };
-    return <StyledLeftPanel customStyle={customStyle}>{text}</StyledLeftPanel>;
+    return (
+        <StyledLeftPanel customStyle={customStyle}>
+            <div style={style}>{text}</div>
+        </StyledLeftPanel>
+    );
 };

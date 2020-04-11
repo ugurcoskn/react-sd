@@ -6,7 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('<MyComponent />', () => {
-    it('renders LifePicker components', () => {
+    it('renders SequenceDiagram components', () => {
         const component = shallow(<SequenceDiagram />);
         expect(component).toMatchSnapshot();
     });

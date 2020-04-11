@@ -29,7 +29,7 @@ export const Step = ({ text, index, length, style }: StepProps) => {
     const [state] = useContext(Context);
 
     const customStyle = {
-        gapHorizontal: state.gapHorizontalBox,
+        gapHorizontal: state.gapStep,
         leftPanelWidth: state.leftPanelWidth,
         index,
     };
@@ -38,12 +38,12 @@ export const Step = ({ text, index, length, style }: StepProps) => {
         <StyledStep style={style} customStyle={customStyle}>
             <Box style={style && style.topBoxStyle} type={ButtonType.TOP} text={text} />
             <Box
-                top={state.gapVerticalBox * length + state.boxHeight}
+                top={state.gapEdge * length + state.boxHeight}
                 style={style && style.bottomBoxStyle}
                 type={ButtonType.BOTTOM}
                 text={text}
             />
-            <div className="line" style={{ height: `${state.gapVerticalBox * length - 2}px` }} />
+            <div className="line" style={{ height: `${state.gapEdge * length - 2}px` }} />
         </StyledStep>
     );
 };

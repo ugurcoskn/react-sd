@@ -28,8 +28,6 @@ const StyledBox = styled.div`
 export const Box = ({ type, text, top, style }: ButtonProps): any => {
     const [state] = useContext(Context);
 
-    console.log(state.boxBorderColor);
-
     return (
         <StyledBox
             style={{

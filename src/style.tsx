@@ -8,8 +8,8 @@ const StyledApp = styled.div<{ style: CustomStyleProps }>`
         position: absolute;
         top: ${(props): string => `${props.style.boxHeight + 2}px`};
         left: ${(props): string => `${props.style.boxWidth / 2}px`};
-        width: ${(props): string => `${props.style.horizontalLineWidth}px`};
-        background-color: ${(props): string => props.style.horizontalLineColor};
+        width: ${(props): string => `${props.style.stepLineWidth}px`};
+        background-color: ${(props): string => props.style.stepLineColor};
     }
 
     .box {
@@ -26,6 +26,7 @@ const StyledApp = styled.div<{ style: CustomStyleProps }>`
         border-bottom: ${(props): string => `1px solid ${props.style.edgeLineColor}`};
         position: absolute;
         text-align: center;
+        line-height: 25px;
     }
 
     .point-left {
@@ -42,7 +43,8 @@ const StyledApp = styled.div<{ style: CustomStyleProps }>`
         position: absolute;
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        margin-top: 15px;
+        line-height: 50px;
+        margin-top: 20.4px;
         z-index: 000;
     }
 `;
@@ -50,9 +52,10 @@ const StyledApp = styled.div<{ style: CustomStyleProps }>`
 interface StyleProviderProps {
     customStyle: CustomStyleProps;
     children: React.ReactNode;
+    length: any;
 }
 
-export const StyleProvider = ({ customStyle, children }: StyleProviderProps) => {
+export const StyleProvider = ({ length, customStyle, children }: StyleProviderProps) => {
     const [state, dispatch] = useContext(Context);
     const [visible, setVisible] = useState(false);
 
@@ -61,5 +64,18 @@ export const StyleProvider = ({ customStyle, children }: StyleProviderProps) => 
         setVisible(true);
     }, [customStyle]);
 
-    return visible ? <StyledApp style={state}>{children}</StyledApp> : <></>;
+    return visible ? (
+        <StyledApp style={state}>
+            <div
+                style={{
+                    height: state.gapEdge * length.data + state.boxHeight * 2,
+                    width: state.leftPanelWidth + state.gapStep * length.categories,
+                }}
+            >
+                {children}
+            </div>
+        </StyledApp>
+    ) : (
+        <></>
+    );
 };
