@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from './store';
-import { CustomStyleProps } from './types';
+import { ActionTypes, Context } from './store';
+import { CustomStyleProps, StyleLength } from './types';
 
 const StyledApp = styled.div<{ style: CustomStyleProps }>`
     .line {
@@ -52,15 +52,15 @@ const StyledApp = styled.div<{ style: CustomStyleProps }>`
 interface StyleProviderProps {
     customStyle: CustomStyleProps;
     children: React.ReactNode;
-    length: any;
+    length: StyleLength;
 }
 
 export const StyleProvider = ({ length, customStyle, children }: StyleProviderProps) => {
-    const [state, dispatch] = useContext(Context);
+    const { state, dispatch } = useContext(Context);
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        dispatch({ type: 'SET_STYLE', payload: customStyle });
+        dispatch({ type: ActionTypes.SET_STYLE, payload: customStyle });
         setVisible(true);
     }, [customStyle]);
 

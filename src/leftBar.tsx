@@ -1,16 +1,13 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Context } from './store';
-import { LeftPanelStyle } from './types';
+import { CustomStyleProps, LeftPanelStyle } from './types';
 
-const StyledLeftPanel = styled.div`
+const StyledLeftPanel = styled.div<{ customStyle: Partial<CustomStyleProps> }>`
     position: absolute;
-    width: ${(props: { customStyle?: any }): string | number =>
-        props.customStyle.leftPanelWidth
-            ? `${props.customStyle.leftPanelWidth + props.customStyle.leftPanelWidth}px`
-            : 'auto'};
-    top: ${(props: { customStyle?: any }): string | number =>
-        props.customStyle.top ? `${props.customStyle.top + 12}px` : 0};
+    width: ${({ customStyle }) =>
+        customStyle.leftPanelWidth ? `${customStyle.leftPanelWidth + customStyle.leftPanelWidth}px` : 'auto'};
+    top: ${({ customStyle }) => (customStyle.top ? `${customStyle.top + 12}px` : 0)};
 `;
 
 interface LeftBarProps {
@@ -20,7 +17,7 @@ interface LeftBarProps {
 }
 
 export const LeftBar = ({ index, text, style }: LeftBarProps) => {
-    const [state] = useContext(Context);
+    const { state } = useContext(Context);
 
     const heightStyle = state.boxHeight + index * state.gapEdge + 20;
 
@@ -28,6 +25,7 @@ export const LeftBar = ({ index, text, style }: LeftBarProps) => {
         top: heightStyle,
         leftPanelWidth: state.leftPanelWidth,
     };
+
     return (
         <StyledLeftPanel customStyle={customStyle}>
             <div style={style}>{text}</div>

@@ -26,7 +26,7 @@ interface StepStyleProps {
 }
 
 export const Step = ({ text, index, length, style }: StepProps) => {
-    const [state] = useContext(Context);
+    const { state } = useContext(Context);
 
     const customStyle = {
         gapHorizontal: state.gapStep,

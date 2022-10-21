@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Context } from './store';
 
-// Todo: Change this with type
 export enum ButtonType {
     TOP = 'top',
     BOTTOM = 'bottom',
@@ -25,8 +24,8 @@ const StyledBox = styled.div`
     top: ${(props: { top?: number }): string | number => (props.top ? `${props.top}px` : 0)};
 `;
 
-export const Box = ({ type, text, top, style }: ButtonProps): any => {
-    const [state] = useContext(Context);
+export const Box = ({ type, text, top, style }: ButtonProps) => {
+    const { state } = useContext(Context);
 
     return (
         <StyledBox

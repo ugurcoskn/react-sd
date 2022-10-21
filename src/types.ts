@@ -12,6 +12,7 @@ export interface SequenceDiagramProps {
 }
 
 export interface CustomStyleProps {
+    top?: number;
     leftPanelWidth: number;
     boxWidth: number;
     boxHeight: number;
@@ -46,4 +47,9 @@ export interface Style extends CustomStyleProps {
     leftPanelStyle?: LeftPanelStyle;
     edgeStyle: EdgeStyle;
     stepStyle?: StepStyle;
+}
+
+export interface StyleLength {
+    data: number;
+    categories: number;
 }

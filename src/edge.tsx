@@ -11,7 +11,7 @@ interface EdgeProps {
 }
 
 export const Edge: React.FC<EdgeProps> = ({ from, to, text, index, style }: EdgeProps) => {
-    const [state] = useContext(Context);
+    const { state } = useContext(Context);
 
     const heightStyle = state.boxHeight + index * state.gapEdge + 20;
 
